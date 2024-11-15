@@ -91,7 +91,7 @@ const LoginPage = () => {
 const Container = styled.div`
   max-width: 500px;
   margin: 0 auto;
-  margin-top:40px;
+  margin-top:60px;
   padding: 40px;
   background: #fff;
   border-radius: 8px;

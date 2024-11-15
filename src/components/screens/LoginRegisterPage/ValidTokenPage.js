@@ -55,7 +55,7 @@ const ValidTokenPage = () => {
   }
 
   return (
-    <Container>
+    <Container sx={{ mt: "60px",}}>
       {isLoading && <LoadingScreen message="Loading..." />} {}
       {!isLoading && (
         <>
