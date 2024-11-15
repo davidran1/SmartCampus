@@ -1,0 +1,158 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set default font and font size */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: #f0ffff; /* replace with your desired color */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Style for the image to cover the full viewport height */
+#image-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+#image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Style the navigation bar */
+nav {
+  position: fixed; /* Sticks the nav to the top while scrolling */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Set height for the navbar */
+  background-color: #2c2b2b; /* Change this to your desired background color */
+  z-index: 1000; /* Ensure it's on top of other elements */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds slight shadow */
+}
+
+/* Style the about section */
+#about {
+  background-color: #ffffff;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#about h2 {
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+
+#about p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Style the features section */
+#features {
+  background-color: #f7f7f7;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#features h2 {
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+
+#features ul {
+  list-style: none;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+#features li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Style the testimonials section */
+#testimonials {
+  background-color: #ffffff;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#testimonials h2 {
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+
+blockquote {
+  margin-bottom: 20px;
+  font-style: italic;
+  font-size: 18px;
+}
+
+/* Style the call-to-action section */
+#call-to-action {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#call-to-action h2 {
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+
+#call-to-action p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  #image-section img {
+    height: auto; /* Ensure image adjusts for mobile screens */
+  }
+
+  #about,
+  #features,
+  #testimonials,
+  #call-to-action {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  p,
+  li {
+    font-size: 16px;
+  }
+}
