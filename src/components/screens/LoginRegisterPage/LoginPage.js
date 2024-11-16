@@ -9,6 +9,7 @@ import {
 } from "../../../redux/slices/userDataSlice";
 import { useNavigate } from "react-router-dom";
 import FailureScreen from "../FailureScreen";
+import LoadingScreen from "../LoadingScreen";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -27,6 +28,7 @@ const LoginPage = () => {
     event.preventDefault(); // Prevent default form submission
 
     try {
+      setIsLoading(true)
       // Getting user from database
       const result = await loginUser({ userName: username, password });
 
@@ -44,48 +46,51 @@ const LoginPage = () => {
     } catch (error) {
       //If failed , the failure screen will show up
       setIsFailure(true);
+    }finally{
+      setIsLoading(false)
     }
   };
 
-  const onErrorClose = () => {
-    setIsFailure(false);
-  };
+const onErrorClose = () => {
+  setIsFailure(false);
+};
 
-  return (
-    <Container>
-      <LoginForm onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+return (
+  <Container>
+    <LoginForm onSubmit={handleSubmit}>
+      <h1>Login</h1>
+      <label htmlFor="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required
+      />
+      <label htmlFor="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
 
-        <button type="submit">Submit</button>
-        <SignUpLink onClick={handleClick}>
-          Not registered yet? Sign Up
-        </SignUpLink>
-        {isFailure && (
-          <FailureScreen
-            mainMessage="Sign in Failed!"
-            bodyMessage="UserName or Password are incorrect"
-            onClose={onErrorClose}
-          />
-        )}
-      </LoginForm>
-    </Container>
-  );
+      <button type="submit">Submit</button>
+      <SignUpLink onClick={handleClick}>
+        Not registered yet? Sign Up
+      </SignUpLink>
+      {isFailure && (
+        <FailureScreen
+          mainMessage="Sign in Failed!"
+          bodyMessage="UserName or Password are incorrect"
+          onClose={onErrorClose}
+        />
+      )}
+    </LoginForm>
+    {isLoading && <LoadingScreen message={'Verifying...'} />}
+  </Container>
+);
 };
 
 const Container = styled.div`
